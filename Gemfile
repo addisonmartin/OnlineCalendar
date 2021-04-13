@@ -36,6 +36,8 @@ group :development, :test do
   gem 'capybara', '~> 3.35'
   # Selenium Webdriver providers the web browser driver that Capyabra uses.
   gem 'selenium-webdriver', '~> 3.142'
+  # Factory Bot is used to create test factories.
+  gem 'factory_bot_rails', '~> 6.1'
 end
 
 group :development do
