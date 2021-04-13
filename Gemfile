@@ -27,6 +27,15 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # RSpec is used as the testing framework.
+  gem 'rspec-rails', '~> 5.0.1'
+  # Faker is used to generate realastic random data.
+  gem 'faker', '~> 2.17'
+  # Capybara is used in tests to simulate the way an end user interacts with the website.
+  gem 'capybara', '~> 3.35'
+  # Selenium Webdriver providers the web browser driver that Capyabra uses.
+  gem 'selenium-webdriver', '~> 3.142'
 end
 
 group :development do
