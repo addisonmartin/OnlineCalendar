@@ -10,4 +10,12 @@ import "channels"
 Rails.start()
 ActiveStorage.start()
 
+require("trix")
+require("@rails/actiontext")
+
 import "controllers"
+
+// Include all of the application specific stylesheets.
+import "../stylesheets/application.scss"
+
+require("bootstrap")
