@@ -23,5 +23,3 @@ calendar.save!
     event.save!
   end
 end
-
-#update factories too!

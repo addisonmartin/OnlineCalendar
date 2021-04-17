@@ -22,8 +22,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :duration %>
-    <%= form.text_field :duration %>
+    <%= form.label :starts_at %>
+    <%= form.datetime_select :starts_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ends_at %>
+    <%= form.datetime_select :ends_at %>
   </div>
 
   <div class="actions">

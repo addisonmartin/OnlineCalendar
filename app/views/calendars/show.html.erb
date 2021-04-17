@@ -1,15 +1,15 @@
-<p>
-  <strong>Name:</strong>
-  <%= @calendar.name %>
-</p>
-
+<div class="d-flex justify-content-center align-items-center">
+  <h1><%= @calendar.name %></h1>
+</div>
 <%= @calendar.description %>
-
+<hr>
 <%= month_calendar(events: @events, attribute: :starts_at, end_attribute: :ends_at) do |date, events| %>
-  <b><%= @calendar.display_as_day_number(date) %></b>
-  <br>
+  <h4><span class="badge rounded-pill bg-primary text-white">
+
+    <%= @calendar.display_as_day_number(date) %>
+  </span></h4>
   <% @calendar.get_holidays(date).each do |holiday| %>
-    <%= holiday %>
+    <b><%= holiday %></b>
   <% end %>
   <hr>
   <% events.each do |event| %>

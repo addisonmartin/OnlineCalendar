@@ -1,15 +1,21 @@
 <div class="calendar">
-  <div class="d-flex p-2 flex-row justify-content-center align-items-center">
-    <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
-    <h2><span><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span></h2>
-    <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+  <div class="d-flex p-2 flex-column">
+    <div class="d-flex p-2 flex-row justify-content-center align-items-center btn-group">
+      <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view, class: 'btn btn-lg btn-outline-secondary' %>
+      <h2 class="px-3"><span><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span></h2>
+      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view, class: 'btn btn-lg btn-outline-secondary' %>
+    </div>
+    <div class="d-flex p-2 flex-row justify-content-center align-items-center btn-group">
+      <%= link_to 'New Event', new_calendar_event_path(@calendar), class: 'btn btn-lg btn-primary' %>
+      <%= link_to 'Return to Today', calendar_path(params[:id]), class: 'btn btn-lg btn-outline-primary' %>
+    </div>
   </div>
 
-  <table class="table table-striped">
-    <thead>
+  <table class="table table-hover table-bordered">
+    <thead class="table-primary">
       <tr>
         <% date_range.slice(0, 7).each do |day| %>
-          <th><%= t('date.abbr_day_names')[day.wday] %></th>
+          <th><%= t('date.day_names')[day.wday] %></th>
         <% end %>
       </tr>
     </thead>
