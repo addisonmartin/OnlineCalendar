@@ -1,0 +1,19 @@
+<p>
+  <strong>Calendar:</strong>
+  <%= @event.calendar_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @event.name %>
+</p>
+
+<%= @event.description %>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @event.duration %>
+</p>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', :back %>
