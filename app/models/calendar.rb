@@ -14,7 +14,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (user_id => users.id)
+#  fk_rails_d574754a30  (user_id => users.id)
 #
 class Calendar < ApplicationRecord
   belongs_to :user, inverse_of: :calendars

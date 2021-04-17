@@ -14,7 +14,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (user_id => users.id)
+#  fk_rails_d574754a30  (user_id => users.id)
 #
 require 'rails_helper'
 

@@ -15,7 +15,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (calendar_id => calendars.id)
+#  fk_rails_f8565e0d58  (calendar_id => calendars.id)
 #
 require 'rails_helper'
 
