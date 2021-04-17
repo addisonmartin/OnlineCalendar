@@ -11,3 +11,12 @@ require 'faker'
 user = User.create(email: 'admin@email.com', password: 'passwordpassword', password_confirmation: 'passwordpassword')
 user.skip_confirmation!
 user.save!
+
+calendar = Calendar.create(name: 'My Calendar', user_id: user.id)
+calendar.save!
+
+date = DateTime.now
+
+
+
+#update factories too!
