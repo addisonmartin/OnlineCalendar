@@ -5,8 +5,16 @@
 
 <%= @calendar.description %>
 
-<%= month_calendar(events: @calendar.events) do |day| %>
-  <%= day %>
+<%= month_calendar(events: @calendar.events) do |date, events| %>
+  <b><%= date.strftime("%-d") %></b>
+
+  <% get_holidays(date).each do |holiday| %>
+    <%= holiday %>
+  <% end %>
+  <hr>
+  <% events.each do |event| %>
+    <%= event.name %>
+  <% end %>
 <% end %>
 
 <%= link_to 'Edit', edit_calendar_path(@calendar) %> |

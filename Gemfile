@@ -23,8 +23,10 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # Devise adds user authentication.
 gem 'devise', '~> 4.7'
 
-# Simple Calender is used to render different calendar views
-gem 'simple_calendar', '~> 2.4.2'
+# Simple Calender is used to render different calendar views.
+gem 'simple_calendar', '~> 2.4'
+# Holidays returns a list of holidays on a given date.
+gem 'holidays', '~> 8.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
