@@ -23,6 +23,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # Devise adds user authentication.
 gem 'devise', '~> 4.7'
 
+# Draper adds an object oriented presentation layer to the Rails MVC pattern.
+gem 'draper', '~> 4.0'
+
 # Simple Calender is used to render different calendar views.
 gem 'simple_calendar', '~> 2.4'
 # Holidays returns a list of holidays on a given date.
@@ -54,7 +57,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-  #
+  # Annotate automatically adds a comment of the database schema to the top of relevant files.
   gem 'annotate', '~> 3.1'
 end
 
