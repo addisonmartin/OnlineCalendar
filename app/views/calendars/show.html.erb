@@ -4,8 +4,11 @@
 <%= @calendar.description %>
 <hr>
 <%= month_calendar(events: @events, attribute: :starts_at, end_attribute: :ends_at) do |date, events| %>
-  <h4><span class="badge rounded-pill bg-primary text-white">
-
+  <% if month(start_date) == month(date) %>
+    <h4><span class="badge rounded-pill bg-primary text-white">
+  <% else %>
+    <h4><span class="badge rounded-pill bg-dark text-white">
+  <% end %>
     <%= @calendar.display_as_day_number(date) %>
   </span></h4>
   <% @calendar.get_holidays(date).each do |holiday| %>

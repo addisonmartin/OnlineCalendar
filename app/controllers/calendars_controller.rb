@@ -1,4 +1,6 @@
 class CalendarsController < ApplicationController
+  include CalendarsHelper
+
   before_action :set_calendar, only: %i[ show edit update destroy ]
 
   # GET /calendars or /calendars.json
@@ -8,7 +10,6 @@ class CalendarsController < ApplicationController
 
   # GET /calendars/1 or /calendars/1.json
   def show
-    start_date = params.fetch(:start_date, Date.today).to_date
     @events = @calendar.events.where(starts_at: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
   end
 
