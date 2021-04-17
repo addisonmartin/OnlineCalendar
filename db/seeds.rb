@@ -7,3 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+
+user = User.create(email: 'admin@email.com', password: 'passwordpassword', password_confirmation: 'passwordpassword')
+user.skip_confirmation!
+user.save!
