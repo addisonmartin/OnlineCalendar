@@ -1,14 +1,13 @@
 <p>
-  <strong>User:</strong>
-  <%= @calendar.user_id %>
-</p>
-
-<p>
   <strong>Name:</strong>
   <%= @calendar.name %>
 </p>
 
 <%= @calendar.description %>
+
+<%= month_calendar(events: @calendar.events) do |day| %>
+  <%= day %>
+<% end %>
 
 <%= link_to 'Edit', edit_calendar_path(@calendar) %> |
 <%= link_to 'Back', :back %>

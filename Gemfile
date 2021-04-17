@@ -17,12 +17,14 @@ gem 'jbuilder', '~> 2.7'
 gem 'redis', '~> 4.0'
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap', '>= 1.4.4', require: false
 
 # Devise adds user authentication.
 gem 'devise', '~> 4.7'
 
-# Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.4', require: false
+# Simple Calender is used to render different calendar views
+gem 'simple_calendar', '~> 2.4.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
