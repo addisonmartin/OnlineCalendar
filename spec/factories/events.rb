@@ -3,8 +3,9 @@
 # Table name: events
 #
 #  id          :bigint           not null, primary key
-#  duration    :daterange
+#  ends_at     :datetime
 #  name        :text
+#  starts_at   :datetime
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  calendar_id :bigint           not null

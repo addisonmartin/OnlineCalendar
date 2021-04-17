@@ -15,8 +15,13 @@ user.save!
 calendar = Calendar.create(name: 'My Calendar', user_id: user.id)
 calendar.save!
 
-date = DateTime.now
-
-
+(-120..120).each_with_index do |day_offset|
+  rand(12).times do
+    event = Event.create(name: Faker::Lorem.unique.sentence, calendar: calendar,
+                         starts_at: Faker::Time.between_dates(from: DateTime.now - day_offset - 1, to: DateTime.now - day_offset, period: :morning, format: :long),
+                         ends_at: Faker::Time.between_dates(from: DateTime.now - day_offset - 1, to: DateTime.now - day_offset, period: :evening, format: :long))
+    event.save!
+  end
+end
 
 #update factories too!

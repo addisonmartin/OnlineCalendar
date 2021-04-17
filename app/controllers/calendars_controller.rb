@@ -8,6 +8,8 @@ class CalendarsController < ApplicationController
 
   # GET /calendars/1 or /calendars/1.json
   def show
+    start_date = params.fetch(:start_date, Date.today).to_date
+    @events = @calendar.events.where(starts_at: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
   end
 
   # GET /calendars/new
@@ -61,7 +63,7 @@ class CalendarsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_calendar
-    @calendar = Calendar.find(params[:id])
+    @calendar = Calendar.find(params[:id]).decorate
   end
 
   # Only allow a list of trusted parameters through.
