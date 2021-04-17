@@ -12,12 +12,12 @@ user = User.create(email: 'admin@email.com', password: 'passwordpassword', passw
 user.skip_confirmation!
 user.save!
 
-calendar = Calendar.create(name: 'My Calendar', user_id: user.id)
+calendar = Calendar.create(name: 'My Calendar', description: Faker::Lorem.unique.sentence, user_id: user.id)
 calendar.save!
 
 (-120..120).each_with_index do |day_offset|
   rand(12).times do
-    event = Event.create(name: Faker::Lorem.unique.sentence, calendar: calendar,
+    event = Event.create(name: Faker::Lorem.unique.sentence, calendar: calendar, description: Faker::Lorem.paragraph(sentence_count: rand(4)),
                          starts_at: Faker::Time.between_dates(from: DateTime.now - day_offset - 1, to: DateTime.now - day_offset, period: :morning, format: :long),
                          ends_at: Faker::Time.between_dates(from: DateTime.now - day_offset - 1, to: DateTime.now - day_offset, period: :evening, format: :long))
     event.save!

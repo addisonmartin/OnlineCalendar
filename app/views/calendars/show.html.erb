@@ -1,11 +1,15 @@
-<div class="d-flex justify-content-center align-items-center">
-  <h1><%= @calendar.name %></h1>
+<div class="d-flex flex-column">
+  <div class="d-flex justify-content-center align-items-center">
+    <h1><%= @calendar.name %></h1>
+  </div>
+  <div class="d-flex justify-content-center align-items-center">
+    <%= @calendar.description %>
+  </div>
 </div>
-<%= @calendar.description %>
 <hr>
 <%= month_calendar(events: @events, attribute: :starts_at, end_attribute: :ends_at) do |date, events| %>
   <% if month(start_date) == month(date) %>
-    <h4><span class="badge rounded-pill bg-primary text-white">
+  <h4><span class="badge rounded-pill bg-primary text-white">
   <% else %>
     <h4><span class="badge rounded-pill bg-dark text-white">
   <% end %>
@@ -15,9 +19,18 @@
     <b><%= holiday %></b>
   <% end %>
   <hr>
-  <% events.each do |event| %>
-    <%= event.name %>
-  <% end %>
+
+  <div class="list-group list-group-flush">
+    <% events.sort_by{|e| e.starts_at }.each do |event| %>
+      <a class="list-group-item list-group-item-action d-flex flex-column align-items-start" href="<%= calendar_event_path(@calendar, event) %>">
+        <div class="d-flex">
+          <%= event.name %>
+        </div>
+        <span class="d-flex badge rounded-pill text-primary"><%= event.duration %></span>
+      </a>
+    <% end %>
+  </div>
+
 <% end %>
 
 <%= link_to 'Edit', edit_calendar_path(@calendar) %> |

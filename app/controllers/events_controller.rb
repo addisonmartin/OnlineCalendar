@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: %i[ show edit update destroy ]
+  before_action :set_event_and_calendar, only: %i[ show edit update destroy ]
 
   # GET /events or /events.json
   def index
@@ -60,8 +60,9 @@ class EventsController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_event
-    @event = Event.find(params[:id])
+  def set_event_and_calendar
+    @event = Event.find(params[:id]).decorate
+    @calendar = @event.calendar
   end
 
   # Only allow a list of trusted parameters through.
