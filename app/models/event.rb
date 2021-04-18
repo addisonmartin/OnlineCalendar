@@ -22,12 +22,4 @@ class Event < ApplicationRecord
   belongs_to :calendar, inverse_of: :events
 
   has_rich_text :description
-
-  def start_time
-    duration.begin
-  end
-
-  def end_time
-    duration.end
-  end
 end

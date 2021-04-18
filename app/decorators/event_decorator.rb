@@ -13,4 +13,8 @@ class EventDecorator < Draper::Decorator
   def duration
     h.distance_of_time_in_words(starts_at, ends_at)
   end
+
+  def starts_at_time
+    starts_at.strftime("%l:%M %P")
+  end
 end
