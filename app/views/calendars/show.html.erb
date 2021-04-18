@@ -1,6 +1,17 @@
 <div class="d-flex flex-column">
   <div class="d-flex justify-content-center align-items-center">
-    <h1><%= @calendar.name %></h1>
+    <h1><%= icon('calendar-range-fill') %> <%= @calendar.name %></h1>
+  </div>
+  <div class="btn-group">
+    <%= link_to edit_calendar_path(@calendar), class: 'btn btn-warning' do %>
+      <%= icon('pencil-square') %> Edit
+    <% end %>
+    <%= link_to new_calendar_path, class: 'btn btn-outline-primary' do %>
+      <%= icon('plus-square') %> New Calendar
+    <% end %>
+    <%= link_to :back, class: 'btn btn-outline-danger' do %>
+      <%= icon('skip-backward-btn') %> Back
+    <% end %>
   </div>
   <div class="d-flex justify-content-center align-items-center">
     <%= @calendar.description %>
@@ -28,7 +39,9 @@
         </div>
         <div class="card-body">
           <div class="card-text"><%= event.description %></div>
-          <%= link_to 'View Event', calendar_event_path(@calendar, event), class: 'btn btn-sm btn-outline-primary' %>
+          <%= link_to calendar_event_path(@calendar, event), class: 'btn btn-sm btn-outline-primary' do %>
+            <%= icon('info-square') %> View Event
+          <% end %>
         </div>
         <div class="card-footer text-muted">
           <%= icon('clock') %> Starts at <%= event.starts_at_time %> for <%= event.duration %>
@@ -36,8 +49,9 @@
       </div>
     <% end %>
   </div>
-
 <% end %>
 
-<%= link_to 'Edit', edit_calendar_path(@calendar) %> |
-<%= link_to 'Back', :back %>
+<%= link_to :back, class: 'd-flex d-flex-row btn btn-lg btn-outline-danger justify-content-center align-items-center' do %>
+  <%= icon('skip-backward-btn') %> Back
+<% end %>
+<br>

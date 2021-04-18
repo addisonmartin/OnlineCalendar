@@ -18,6 +18,11 @@ class CalendarsController < ApplicationController
                    .not_completed
                    .where(starts_at: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
                    .decorate
+
+    # Check if an old ID was used to reference the calendar, and redirect to the new location.
+    if request.path != calendar_path(@calendar)
+      redirect_to @calendar, status: :moved_permanently
+    end
   end
 
   # GET /calendars/new
@@ -27,6 +32,10 @@ class CalendarsController < ApplicationController
 
   # GET /calendars/1/edit
   def edit
+    # Check if an old ID was used to reference the calendar, and redirect to the new location.
+    if request.path != edit_calendar_path(@calendar)
+      redirect_to @calendar, status: :moved_permanently
+    end
   end
 
   # POST /calendars or /calendars.json
@@ -72,11 +81,6 @@ class CalendarsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_calendar
     @calendar = Calendar.friendly.find(params[:id]).decorate
-
-    # Check if an old ID was used to reference the calendar.
-    if request.path != calendar_path(@calendar)
-      redirect_to @calendar, status: :moved_permanently
-    end
   end
 
   # Only allow a list of trusted parameters through.

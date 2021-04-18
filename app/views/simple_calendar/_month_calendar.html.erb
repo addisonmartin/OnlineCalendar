@@ -1,13 +1,21 @@
 <div class="calendar">
   <div class="d-flex p-2 flex-column">
     <div class="d-flex p-2 flex-row justify-content-center align-items-center btn-group">
-      <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view, class: 'btn btn-lg btn-outline-secondary' %>
+      <%= link_to calendar.url_for_previous_view, class: 'btn btn-lg btn-outline-secondary' do %>
+        <%= icon('chevron-double-left') %> <%= t('simple_calendar.previous', default: 'Previous') %>
+      <% end %>
       <h2 class="px-3"><span><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span></h2>
-      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view, class: 'btn btn-lg btn-outline-secondary' %>
+      <%= link_to calendar.url_for_next_view, class: 'btn btn-lg btn-outline-secondary' do %>
+        <%= t('simple_calendar.next', default: 'Next') %> <%= icon('chevron-double-right') %>
+      <% end %>
     </div>
     <div class="d-flex p-2 flex-row justify-content-center align-items-center btn-group">
-      <%= link_to 'New Event', new_calendar_event_path(@calendar), class: 'btn btn-lg btn-primary' %>
-      <%= link_to 'Return to Today', calendar_path(params[:id]), class: 'btn btn-lg btn-outline-primary' %>
+      <%= link_to new_calendar_event_path(@calendar), class: 'btn btn-lg btn-primary' do %>
+        <%= icon('plus-square') %> New Event
+    <% end %>
+      <%= link_to calendar_path(params[:id]), class: 'btn btn-lg btn-outline-primary' do %>
+        <%= icon('arrow-clockwise') %> Return to Current Month
+      <% end %>
     </div>
   </div>
 
