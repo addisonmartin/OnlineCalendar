@@ -10,12 +10,16 @@ class EventDecorator < Draper::Decorator
   #     end
   #   end
 
-  def duration
-    h.distance_of_time_in_words(starts_at, ends_at)
-  end
-
   def starts_at_time
     starts_at.strftime("%l:%M %P")
+  end
+
+  def ends_at_time
+    ends_at.strftime("%l:%M %P")
+  end
+
+  def duration
+    h.distance_of_time_in_words(starts_at, ends_at)
   end
 
   def background_color

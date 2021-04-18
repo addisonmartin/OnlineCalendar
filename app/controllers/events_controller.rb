@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event_and_calendar, only: %i[ show edit update destroy ]
+  before_action :set_calendar, only: %i[ new create ]
 
   # GET /events or /events.json
   def index
@@ -22,7 +23,7 @@ class EventsController < ApplicationController
   # POST /events or /events.json
   def create
     @event = Event.new(event_params)
-    @event.user = current_user
+    @event.calendar = @calendar
 
     respond_to do |format|
       if @event.save
@@ -63,6 +64,10 @@ class EventsController < ApplicationController
   def set_event_and_calendar
     @event = Event.find(params[:id]).decorate
     @calendar = @event.calendar
+  end
+
+  def set_calendar
+    @calendar = Calendar.friendly.find(params[:calendar_id])
   end
 
   # Only allow a list of trusted parameters through.
