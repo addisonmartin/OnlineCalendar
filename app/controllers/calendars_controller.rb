@@ -64,7 +64,12 @@ class CalendarsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_calendar
-    @calendar = Calendar.find(params[:id]).decorate
+    @calendar = Calendar.friendly.find(params[:id]).decorate
+
+    # Check if an old ID was used to reference the calendar.
+    if request.path != calendar_path(@calendar)
+      redirect_to @calendar, status: :moved_permanently
+    end
   end
 
   # Only allow a list of trusted parameters through.

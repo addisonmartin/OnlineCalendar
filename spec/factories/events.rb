@@ -3,10 +3,10 @@
 # Table name: events
 #
 #  id          :bigint           not null, primary key
-#  color       :text
-#  ends_at     :datetime
-#  name        :text
-#  starts_at   :datetime
+#  color       :text             not null
+#  ends_at     :datetime         not null
+#  name        :text             not null
+#  starts_at   :datetime         not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  calendar_id :bigint           not null

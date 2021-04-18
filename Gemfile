@@ -23,6 +23,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # Devise adds user authentication.
 gem 'devise', '~> 4.7'
 
+# Friendly ID is used to display models by a URL slug other than ID.
+gem 'friendly_id', '~> 5.4'
 # Draper adds an object oriented presentation layer to the Rails MVC pattern.
 gem 'draper', '~> 4.0'
 
