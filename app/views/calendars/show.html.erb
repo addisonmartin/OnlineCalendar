@@ -22,7 +22,7 @@
 
   <div class="row-cols-1">
     <% events.sort_by{|e| e.starts_at }.each do |event| %>
-      <div class="card mb-1">
+      <div class="card border-secondary <%= event.background_color %> mb-1">
         <div class="card-header">
           <%= event.name %>
         </div>

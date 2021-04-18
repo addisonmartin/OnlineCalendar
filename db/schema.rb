@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2021_04_15_154248) do
   create_table "events", force: :cascade do |t|
     t.bigint "calendar_id", null: false
     t.text "name"
+    t.text "color"
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.datetime "created_at", precision: 6, null: false

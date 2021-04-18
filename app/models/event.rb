@@ -3,6 +3,7 @@
 # Table name: events
 #
 #  id          :bigint           not null, primary key
+#  color       :text
 #  ends_at     :datetime
 #  name        :text
 #  starts_at   :datetime
@@ -22,4 +23,6 @@ class Event < ApplicationRecord
   belongs_to :calendar, inverse_of: :events
 
   has_rich_text :description
+
+  COLOR_OPTIONS = ["None", "Red", "Orange", "Green", "Cyan", "Blue", "Gray"].freeze
 end
