@@ -21,6 +21,12 @@ calendar.save!
                          color: Event::COLOR_OPTIONS[rand(Event::COLOR_OPTIONS.length)],
                          starts_at: Faker::Time.between_dates(from: DateTime.now - day_offset - 1, to: DateTime.now - day_offset, period: :morning, format: :long),
                          ends_at: Faker::Time.between_dates(from: DateTime.now - day_offset - 1, to: DateTime.now - day_offset, period: :evening, format: :long))
+
+    if rand(2).zero?
+      event.completable = true
+      event.completed_at = rand(2).zero? ? nil : Faker::Time.backward(days: 10)
+    end
+
     event.save
   end
 end

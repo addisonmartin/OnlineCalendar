@@ -10,7 +10,11 @@ class CalendarsController < ApplicationController
 
   # GET /calendars/1 or /calendars/1.json
   def show
-    @events = @calendar.events.where(starts_at: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
+    # TODO Add a checkbox toggle on the show view for completed true/false
+    @events = Event.where(calendar_id: @calendar.id)
+                   .not_completed
+                   .where(starts_at: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
+                   .decorate
   end
 
   # GET /calendars/new

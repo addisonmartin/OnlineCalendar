@@ -2,14 +2,16 @@
 #
 # Table name: events
 #
-#  id          :bigint           not null, primary key
-#  color       :text             not null
-#  ends_at     :datetime         not null
-#  name        :text             not null
-#  starts_at   :datetime         not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  calendar_id :bigint           not null
+#  id           :bigint           not null, primary key
+#  color        :text             not null
+#  completable  :boolean          default(FALSE)
+#  completed_at :datetime
+#  ends_at      :datetime         not null
+#  name         :text             not null
+#  starts_at    :datetime         not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  calendar_id  :bigint           not null
 #
 # Indexes
 #

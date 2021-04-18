@@ -2,14 +2,16 @@
 #
 # Table name: events
 #
-#  id          :bigint           not null, primary key
-#  color       :text             not null
-#  ends_at     :datetime         not null
-#  name        :text             not null
-#  starts_at   :datetime         not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  calendar_id :bigint           not null
+#  id           :bigint           not null, primary key
+#  color        :text             not null
+#  completable  :boolean          default(FALSE)
+#  completed_at :datetime
+#  ends_at      :datetime         not null
+#  name         :text             not null
+#  starts_at    :datetime         not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  calendar_id  :bigint           not null
 #
 # Indexes
 #
@@ -24,6 +26,8 @@ class Event < ApplicationRecord
 
   has_rich_text :description
 
+  has_paper_trail
+
   COLOR_OPTIONS = ["None", "Red", "Orange", "Green", "Cyan", "Blue"].freeze
 
   validates :name, :color, :starts_at, :ends_at, presence: true
@@ -36,4 +40,7 @@ class Event < ApplicationRecord
       errors.add(:ends_at, "must be after start time")
     end
   end
+
+  scope :completed, -> { where.not(completed_at: nil) }
+  scope :not_completed, -> { where(completed_at: nil) }
 end

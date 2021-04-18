@@ -27,6 +27,8 @@ gem 'devise', '~> 4.7'
 gem 'friendly_id', '~> 5.4'
 # Draper adds an object oriented presentation layer to the Rails MVC pattern.
 gem 'draper', '~> 4.0'
+# Paper Trail tracks and stores changes to models.
+gem 'paper_trail', '~> 12.0'
 
 # Simple Calender is used to render different calendar views.
 gem 'simple_calendar', '~> 2.4'

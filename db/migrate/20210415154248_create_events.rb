@@ -7,6 +7,9 @@ class CreateEvents < ActiveRecord::Migration[6.1]
       t.datetime :starts_at, null: false
       t.datetime :ends_at, null: false
 
+      t.boolean :completable, default: false
+      t.datetime :completed_at
+
       t.timestamps
     end
   end
