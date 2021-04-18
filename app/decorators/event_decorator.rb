@@ -31,6 +31,5 @@ class EventDecorator < Draper::Decorator
     "Green" => 'bg-success',
     "Cyan" => 'bg-warning',
     "Blue" => 'bg-primary',
-    "Gray" => 'bg-secondary'
   }.freeze
 end

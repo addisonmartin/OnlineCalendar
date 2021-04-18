@@ -21,4 +21,7 @@ class Calendar < ApplicationRecord
   has_many :events, inverse_of: :calendar
 
   has_rich_text :description
+
+  validates :name, presence: true
+  validates :name, uniqueness: { case_sensitive: false }
 end
