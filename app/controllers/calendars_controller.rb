@@ -10,7 +10,10 @@ class CalendarsController < ApplicationController
 
   # GET /calendars/1 or /calendars/1.json
   def show
-    # TODO Add a checkbox toggle on the show view for completed true/false
+    # TODO Add a checkbox to toggle viewing:
+      # completable: true/false/all
+      # completed: true/false/all
+      # colors: blue/yellow/.../all
     @events = Event.where(calendar_id: @calendar.id)
                    .not_completed
                    .where(starts_at: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
