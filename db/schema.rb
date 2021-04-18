@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_012160) do
     t.datetime "ends_at", null: false
     t.boolean "completable", default: false
     t.datetime "completed_at"
+    t.string "type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["calendar_id"], name: "index_events_on_calendar_id"

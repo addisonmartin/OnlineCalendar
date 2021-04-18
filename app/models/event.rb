@@ -9,6 +9,7 @@
 #  ends_at      :datetime         not null
 #  name         :text             not null
 #  starts_at    :datetime         not null
+#  type         :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  calendar_id  :bigint           not null
@@ -28,19 +29,34 @@ class Event < ApplicationRecord
 
   has_paper_trail
 
-  COLOR_OPTIONS = ["None", "Red", "Orange", "Green", "Cyan", "Blue"].freeze
+  COLOR_OPTIONS = ['None', 'Red', 'Orange', 'Green', 'Cyan', 'Blue'].freeze
 
   validates :name, :color, :starts_at, :ends_at, presence: true
-  validates :color, inclusion: { in: COLOR_OPTIONS, message: "%{value} is not a valid color" }
+  validates :color, inclusion: { in: COLOR_OPTIONS, message: '%{value} is not a valid color' }
   validate :ends_at_after_starts_at
 
   def ends_at_after_starts_at
     if ends_at < starts_at
-      errors.add(:starts_at, "must be before end time")
-      errors.add(:ends_at, "must be after start time")
+      errors.add(:starts_at, 'must be before end time')
+      errors.add(:ends_at, 'must be after start time')
     end
   end
 
   scope :completed, -> { where.not(completed_at: nil) }
   scope :not_completed, -> { where(completed_at: nil) }
+
+  # Usage: Event.for(params) from within the controller.
+  def self.for(params)
+
+    event_type = params.delete(:type)
+    case event_type
+    when 'Event'
+      Event
+    when 'RoutineEvent'
+      RoutineEvent
+    else
+      raise('Unknown type!')
+    end.new(params)
+
+  end
 end

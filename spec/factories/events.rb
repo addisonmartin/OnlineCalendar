@@ -9,6 +9,7 @@
 #  ends_at      :datetime         not null
 #  name         :text             not null
 #  starts_at    :datetime         not null
+#  type         :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  calendar_id  :bigint           not null

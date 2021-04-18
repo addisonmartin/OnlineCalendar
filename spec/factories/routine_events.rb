@@ -22,8 +22,8 @@
 #
 #  fk_rails_f8565e0d58  (calendar_id => calendars.id)
 #
-require 'rails_helper'
-
-RSpec.describe Event, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+FactoryBot.define do
+  factory :routine_event do
+    
+  end
 end

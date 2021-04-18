@@ -10,6 +10,8 @@ class CreateEvents < ActiveRecord::Migration[6.1]
       t.boolean :completable, default: false
       t.datetime :completed_at
 
+      t.string :type # Required for STI to work on this model.
+
       t.timestamps
     end
   end
