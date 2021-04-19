@@ -1,27 +1,32 @@
 <%= form_with(model: calendar) do |form| %>
-  <% if calendar.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(calendar.errors.count, "error") %> prohibited this calendar from being saved:</h2>
+  <div class="col">
+    <% if calendar.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(calendar.errors.count, "error") %> prohibited this calendar from being saved:</h2>
 
-      <ul>
-        <% calendar.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% calendar.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :name, class: 'input-group-text' %>
+      <%= form.text_area :name, class: 'form-control' %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_area :name %>
-  </div>
+    <div class="form-group">
+      <%= form.label :description, class: 'input-group-text' %>
+      <%= form.rich_text_area :description, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.rich_text_area :description %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <div class="d-flex d-flex-row justify-content-center align-items-center btn-group btn-group-lg">
+      <%= form.submit class: 'btn btn-block btn-primary' %>
+      <%= link_to :back, class: 'btn btn-block btn-outline-danger' do %>
+        <%= icon('skip-backward-btn') %> Back
+      <% end %>
+    </div>
   </div>
 <% end %>
